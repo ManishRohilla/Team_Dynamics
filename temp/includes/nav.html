@@ -1,0 +1,35 @@
+<header>
+    <nav>
+        <ul class="nav nav-pills">
+           <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link {% if index %}active{% endif %}">Home</a></li>
+
+
+              {% if session['a_username'] %}
+              <li class="nav-item"><a href="{{ url_for('cv_selection') }}" class="nav-link {% if cv_selection %}active{% endif %}">Cv Selection</a></li>
+              <li class="nav-item"><a href="{{ url_for('register') }}" class="nav-link {% if register %}active{% endif %}">Register Employee</a></li>
+              <li class="nav-item"><a href="{{ url_for('project_undertakings') }}"  class="nav-link {% if project_undertakings %}active{% endif %}">Projects</a></li>
+              <li class="nav-item"><a href="{{ url_for('employee_project_details') }}"  class="nav-link {% if employee_project_details %}active{% endif %}">Employee Project Details</a></li>
+              <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+
+
+               {% elif session['username'] and not session['a_username'] %}
+               <li class="nav-item"><a href="{{ url_for('project_undertakings') }}"  class="nav-link {% if project_undertakings %}active{% endif %}">Projects</a></li>
+               <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link">Logout</a></li>
+
+
+
+                 {%else%}
+              <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link {% if login %}active{% endif %}">Employee Login</a></li>
+              <li class="nav-item"><a href="{{ url_for('adminlogin') }}" class="nav-link {% if adminlogin %}active{% endif %}">Manager Login</a></li>
+              <li class="nav-item"><a href="{{ url_for('register_as_professional') }}" class="nav-link {% if register_as_professional %}active{% endif %}">Register as Professional</a></li>
+              <li class="nav-item"><a href="{{ url_for('job_application') }}" class="nav-link {% if job_application %}active{% endif %}">Job Application</a></li>
+              <li class="nav-item"><a href="{{ url_for('project_allocation') }}" class="nav-link {% if project_allocation %}active{% endif %}">Project Allocation</a></li>
+              {% endif %}
+
+
+
+
+        </ul>
+    </nav>
+    <hr style="clear:both">
+</header>

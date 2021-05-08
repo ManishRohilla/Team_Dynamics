@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2><b>Job Application</b></h2>
+<br>
+<div class="row">
+    <div class="col-md-9 offset-md-2">
+      <form action="{{ url_for('job_application_submit') }}" method=post enctype=multipart/form-data>
+
+        <label for="username"><b>Full Name</b></label>
+        <input type="text" placeholder="Enter Name" name="name" required>
+        <br>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="For Eg: abc@yahoo.com" name="email"  required>
+        <br>
+
+        <label for="address"><b>Address</b></label>
+        <input type="text" placeholder="Enter Address" name="address" required>
+        <br>
+
+        <label for="phone1"><b>Contact number 1: &nbsp;</b></label>
+        <input type="text" name="phone1" placeholder="8234-456-678" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" required class="col-md-6 offset-md-3">
+        <br>
+
+        <label for="phone2"><b>Contact number 2: &nbsp;</b></label>
+        <input type="text" name="phone2" placeholder="8234-456-678   (Optional)" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}"  class="col-md-6 offset-md-3">
+        <br>
+        <br>
+
+        <h3 class="col-md-10 offset-md-5"><b> Academics </b> </h3>
+        <br>
+
+        <label for="university"><b>University or College &nbsp;</b></label>
+        <input type="text" name="university"  required>
+        <br>
+
+        <label for="degree"><b>Degree &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  </b></label>
+        <input type="text" name="degree" class="col-md-6 offset-md-3" required>
+        <br>
+
+        <label for="specialization"><b>Specialization &nbsp;</b></label>
+        <input type="text" name="Specialization" class="col-md-6 offset-md-3" required>
+        <br>
+
+        <label for="passout year"><b>Passout Year &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;</b></label>
+        <input type="text" name="passout year" class="col-md-2 offset-md-3" required>
+        <br>
+
+
+        <label for="experience"><b>Experience(in years) &nbsp;</b></label>
+        <input type="text" name="experience" class="col-md-2 offset-md-3" required>
+        <br>
+
+        <label for ='file' ><b>Select Resume File</b> &nbsp;<b></label>
+        <input type='file' name='file' value =""  required>
+        <br>
+
+
+        <br class="clear">
+        <input class="btn-submit" type="submit" name="submit">
+      </form>
+    </div>
+</div>
+    {% endblock %}
