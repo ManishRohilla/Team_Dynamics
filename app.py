@@ -4,12 +4,7 @@ import re
 import os
 import pandas as pd
 import numpy as np
-from difflib import SequenceMatcher
-import json
-import os.path
-from werkzeug.utils import secure_filename
-from flask_mongoengine import MongoEngine
-from pymongo import MongoClient
+
 
 
 
@@ -213,10 +208,7 @@ def register():
     form = RegisterForm()
     if form.validate_on_submit():
         user_id     = User.objects.count()
-        user_id     += 1
 
-        email       = form.email.data
-        password    = form.password.data
         first_name  = form.first_name.data
         last_name   = form.last_name.data
 
@@ -283,14 +275,8 @@ def adminregister():
 @app.route('/your_url',methods=['GET','POST'])
 
 
-def your_url():
-    if request.method=='POST':
-        mongo_client = MongoClient()
-        db = mongo_client.Team_Dynamics
-        col = db.registered__professionals
+
         d1=[]
-        for doc in col.find():
-            d1.append(doc)
 
         df=pd.DataFrame(d1)
         df_empid=df['empid']
@@ -407,9 +393,6 @@ def allocated():
         selected_list_converted=[]
         for emp in selected_list:
             emp=eval(emp)
-            selected_list_converted.append(emp)
-        if file_name in files_list:
-            flash('Request Already Exist','danger')
             return redirect(url_for('index'))
         else:
             with open ('Employee_Allocated\\'+file_name,'w') as file:
