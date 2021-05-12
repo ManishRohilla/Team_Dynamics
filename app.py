@@ -379,4 +379,4 @@ def display_employees():
         else:
             flash("No data available","danger")
             return redirect(url_for('index'))
-    return render_template('display_employees.html',display_employee_list=display_employee_list)
+    return render_template('display_employees.html',display_employee_list=display_employee_list )
